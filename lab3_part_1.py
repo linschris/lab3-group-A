@@ -6,7 +6,7 @@ goal_state = pyhop.Goal('maze')
 
 maze_state.loc = {'me': {'x': 0, 'y': 0}}
 maze_state.last_direction = {'me': {'direction': 'null'}}
-goal_state.loc = {'me': {'x': 2, 'y': 2}}
+goal_state.loc = {'me': {'x': 2, 'y': 4}}
 
 # N, S, E, W --> North, South, East, West
 maze_state.direction = {'me': 'N'}
@@ -14,9 +14,11 @@ maze_state.direction = {'me': 'N'}
 # 0 is open, 1 is wall
 maze_state.maze = {'maze': [
     # North
-    [0,1,1],
-    [0,1,0],
-    [0,0,0]
+    [0,1,1,1,0],
+    [0,1,0,0,0],
+    [0,0,0,1,0],
+    [0,1,1,1,0],
+    [0,1,0,0,0]
 ]}
 
 # Operators 
@@ -29,6 +31,7 @@ def move(state, a, x, y):
             state.loc[a]['x'] = x
             state.loc[a]['y'] = y
             state.maze['maze'][y][x] = 2
+            return state
     return False
 
 
